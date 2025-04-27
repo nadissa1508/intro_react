@@ -15,6 +15,8 @@
 <body>
     <div id="root"></div>
     <script type="text/babel">
+
+
         function Greeting() {
             return (
                 <h1>
@@ -22,9 +24,54 @@
                 </h1>
             );
         }
-      
+
+        //componente hijo
+        function CommentForm(props){
+            const [inputValue, setInputValue] = React.useState('');
+        
+            function sendComment() {
+                if (inputValue.trim() !== '') {
+                    props.makeComment(inputValue); 
+                    setInputValue(''); 
+                }
+            }
+
+            return(
+                <div>
+                    <input type="text" value={inputValue} onChange={(e) => setInputValue(e.target.value)} placeholder="Ingrese un comentario" />
+                    <button onClick={sendComment}>
+                        Enviar
+                    </button>
+                </div>
+            );
+        }
+
+        //componente padre
+        function App(){
+            const [commentList, setCommentList] = React.useState([]);
+
+            function makeComment(newComment){
+                setCommentList([...commentList, newComment]);
+            }
+
+            const list = commentList.map((comment) =>
+                <li>
+                    {comment}
+                </li>
+            );
+
+            return (
+                <div>
+                    <Greeting />
+                    <CommentForm makeComment={makeComment} />
+                    <ul>{list}</ul>
+                </div>
+            );
+
+        }
+
         const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<Greeting />);
+        root.render(<App />);
     </script>
 </body>
 </html>
