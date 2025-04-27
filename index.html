@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>React Counter Example</title>
+    <title>Intro a React</title>
     <link href="index.css" rel="stylesheet">
     <!-- React -->
     <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
@@ -14,6 +14,17 @@
 </head>
 <body>
     <div id="root"></div>
-    <script type="text/babel" src="index.js"></script>
+    <script type="text/babel">
+        function Greeting() {
+            return (
+                <h1>
+                    ¡Hola, bienvenido a React!
+                </h1>
+            );
+        }
+      
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<Greeting />);
+    </script>
 </body>
 </html>
