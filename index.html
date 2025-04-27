@@ -61,9 +61,11 @@
             );
 
             return (
-                <div>
+                <div className = 'container'>
                     <Greeting />
+                    <h2>Formulario</h2>
                     <CommentForm makeComment={makeComment} />
+                    <h2>Lista de comentarios</h2>
                     <ul>{list}</ul>
                 </div>
             );
